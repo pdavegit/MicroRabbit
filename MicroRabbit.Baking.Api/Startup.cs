@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
-using MicroRabbit.Banking.Data.Context;
-using MicroRabbit.Banking.Data.Repository;
-using MicroRabbit.Banking.Domain.Interfaces;
+using MicroRabbit.Transfer.Data.Context;
+using MicroRabbit.Transfer.Data.Repository;
+using MicroRabbit.Transfer.Domain.Interfaces;
 using MicroRabbit.Infra.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,8 +18,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MicroRabbit.Infra.Bus;
+using MicroRabbit.Domain.Core.Bus;
+using MicroRabbit.Transfer.Application.Interfaces;
+using MicroRabbit.Transfer.Application.Services;
+using MicroRabbit.Transfer.Domain.CommandHandlers;
+using MicroRabbit.Transfer.Domain.Commands;
+using MicroRabbit.Transfer.Domain.EventHandlers;
 
-namespace MicroRabbit.Baking.Api
+namespace MicroRabbit.Banking.Api
 {
     public class BankingFactory : IDesignTimeDbContextFactory<BankingDbContext>
     {
@@ -45,7 +52,6 @@ namespace MicroRabbit.Baking.Api
            services.AddDbContext<BankingDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("BankingDbConnection"));
-                //options.UseSqlServer("Server=DESKTOP-E71A3FI;Database=BankingDB;Trusted_Connection=True;MultipleActiveResultSets=True");
             });
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -57,7 +63,25 @@ namespace MicroRabbit.Baking.Api
         }
         private void RegisterServices(IServiceCollection services)
         {
-            DependencyContainer.RegisterServices(services);
+            services.AddSingleton<IEventBus, RabbitMQBus>(sp =>
+            {
+                var scopeFactory = sp.GetRequiredService<IServiceScopeFactory>();
+                return new RabbitMQBus(sp.GetService<IMediator>(), scopeFactory);
+            });
+            //services.AddTransient<TransferEventHandler>();
+            // Domain Bus
+            services.AddTransient<IEventBus, RabbitMQBus>();
+            // Domain Banking Commands
+            services.AddTransient<IRequestHandler<CreateTransferCommand, bool>, TransferCommandHandler>();
+            // Application Services
+            services.AddTransient<IAccountService, AccountService>();
+            //services.AddTransient<ITransferService, TransferService>();
+            // Data
+            services.AddTransient<IAccountRepository, AccountRepository>();
+            //services.AddTransient<ITransferRepository, TransferRepository>();
+            services.AddTransient<BankingDbContext>();
+            //services.AddTransient<TransferDbContext>();
+            //DependencyContainer.RegisterServices(services);
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

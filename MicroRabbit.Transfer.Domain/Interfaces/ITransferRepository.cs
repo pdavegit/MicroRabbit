@@ -1,12 +1,14 @@
 ﻿using MicroRabbit.Transfer.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace MicroRabbit.Transfer.Domain.Interfaces
 {
-    public interface IAccountRepository
+    public interface ITransferRepository
     {
-        IEnumerable<Account> GetAccounts();
+        IEnumerable<TransferLog> GetTransferLogs();
+        void Add(TransferLog l);
     }
 }

@@ -8,12 +8,11 @@ using System.Text;
 
 namespace MicroRabbit.Transfer.Data.Context
 {
-    public class BankingDbContext : DbContext
+    public class TransferDbContext : DbContext
     {
-        public BankingDbContext(DbContextOptions<BankingDbContext> options) : base(options)
+        public TransferDbContext(DbContextOptions options) : base(options)
         {
         }
-        public DbSet<Account> Accounts { get; set; }
+        public DbSet<TransferLog> TransferLogs { get; set; }
     }
-
 }

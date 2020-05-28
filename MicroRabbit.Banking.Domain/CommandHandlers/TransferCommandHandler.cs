@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using MediatR.Pipeline;
-using MicroRabbit.Banking.Domain.Commands;
-using MicroRabbit.Banking.Domain.Events;
+using MicroRabbit.Transfer.Domain.Commands;
+using MicroRabbit.Transfer.Domain.Events;
 using MicroRabbit.Domain.Core.Bus;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MicroRabbit.Banking.Domain.CommandHandlers
+namespace MicroRabbit.Transfer.Domain.CommandHandlers
 {
     public class TransferCommandHandler : IRequestHandler<CreateTransferCommand, bool>
     {
