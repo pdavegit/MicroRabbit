@@ -5,8 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="NewFolder\" />
+    <Compile Remove="Interfaces\**" />
+    <Compile Remove="NewFolder\**" />
+    <EmbeddedResource Remove="Interfaces\**" />
+    <EmbeddedResource Remove="NewFolder\**" />
+    <None Remove="Interfaces\**" />
+    <None Remove="NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200527203027_Initial Migration.cs" />
+    <Compile Remove="Migrations\20200527203027_Initial Migration.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

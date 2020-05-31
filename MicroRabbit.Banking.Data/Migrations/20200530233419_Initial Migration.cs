@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MicroRabbit.Transfer.Data.Migrations
+namespace MicroRabbit.Banking.Data.Migrations
 {
     public partial class InitialMigration : Migration
     {

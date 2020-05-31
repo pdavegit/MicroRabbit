@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MicroRabbit.Transfer.Application.Interfaces;
-using MicroRabbit.Transfer.Application.Models;
-using MicroRabbit.Transfer.Domain.Models;
+using MicroRabbit.Banking.Domain.Models;
+using MicroRabbit.Banking.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MicroRabbit.Banking.Application.Interfaces;
+using MicroRabbit.Banking.Application.Models;
 
 namespace MicroRabbit.Banking.Api.Controllers
 {

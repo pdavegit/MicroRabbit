@@ -1,10 +1,8 @@
-﻿using MicroRabbit.Transfer.Application.Models;
-using MicroRabbit.Transfer.Domain.Models;
-using System;
+﻿using MicroRabbit.Banking.Application.Models;
+using MicroRabbit.Banking.Domain.Models;
 using System.Collections.Generic;
-using System.Text;
 
-namespace MicroRabbit.Transfer.Application.Interfaces
+namespace MicroRabbit.Banking.Application.Interfaces
 {
     public interface IAccountService
     {

@@ -20,15 +20,17 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MicroRabbit.Infra.Bus;
 using MicroRabbit.Domain.Core.Bus;
-using MicroRabbit.Transfer.Application.Interfaces;
-using MicroRabbit.Transfer.Application.Services;
-using MicroRabbit.Transfer.Domain.CommandHandlers;
-using MicroRabbit.Transfer.Domain.Commands;
-using MicroRabbit.Transfer.Domain.EventHandlers;
+
+using MicroRabbit.Banking.Data.Context;
+using MicroRabbit.Banking.Domain.Commands;
+using MicroRabbit.Banking.Domain.CommandHandlers;
+using MicroRabbit.Banking.Application.Interfaces;
+using MicroRabbit.Banking.Application.Services;
+using MicroRabbit.Banking.Domain.Interfaces;
 
 namespace MicroRabbit.Banking.Api
 {
-    public class BankingFactory : IDesignTimeDbContextFactory<BankingDbContext>
+    /*public class BankingFactory : IDesignTimeDbContextFactory<BankingDbContext>
     {
         public BankingDbContext CreateDbContext(string[] args)
         {
@@ -36,7 +38,7 @@ namespace MicroRabbit.Banking.Api
             optionsBuilder.UseSqlServer("Server=DESKTOP-E71A3FI;Database=BankingDB;Trusted_Connection=True; MultipleActiveResultSets=True");
             return new BankingDbContext(optionsBuilder.Options);
         }
-    }
+    }*/
     public class Startup
     {
         public Startup(IConfiguration configuration)

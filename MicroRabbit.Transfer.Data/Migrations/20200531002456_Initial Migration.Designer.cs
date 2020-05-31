@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MicroRabbit.Transfer.Data.Migrations
 {
     [DbContext(typeof(TransferDbContext))]
-    [Migration("20200527203027_Initial Migration")]
+    [Migration("20200531002456_Initial Migration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

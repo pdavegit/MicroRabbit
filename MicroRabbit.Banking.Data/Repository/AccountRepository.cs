@@ -1,9 +1,7 @@
-﻿using MicroRabbit.Transfer.Data.Context;
-using MicroRabbit.Transfer.Domain.Interfaces;
-using MicroRabbit.Transfer.Domain.Models;
-using System;
+﻿using MicroRabbit.Banking.Data.Context;
+using MicroRabbit.Banking.Domain.Models;
 using System.Collections.Generic;
-using System.Text;
+using MicroRabbit.Banking.Domain.Interfaces;
 
 namespace MicroRabbit.Transfer.Data.Repository
 {

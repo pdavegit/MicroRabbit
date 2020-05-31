@@ -5,9 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CommandHandlers\" />
-    <Folder Include="Commands\" />
-    <Folder Include="NewFolder\" />
+    <Compile Remove="CommandHandlers\**" />
+    <Compile Remove="Commands\**" />
+    <Compile Remove="NewFolder\**" />
+    <EmbeddedResource Remove="CommandHandlers\**" />
+    <EmbeddedResource Remove="Commands\**" />
+    <EmbeddedResource Remove="NewFolder\**" />
+    <None Remove="CommandHandlers\**" />
+    <None Remove="Commands\**" />
+    <None Remove="NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>

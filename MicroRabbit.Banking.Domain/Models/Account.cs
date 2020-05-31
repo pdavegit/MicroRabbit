@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MicroRabbit.Transfer.Domain.Models
+namespace MicroRabbit.Banking.Domain.Models
 {
     public class Account
     {
